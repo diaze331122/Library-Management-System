@@ -1,0 +1,15 @@
+ul{
+  list-style-type:none;
+  padding:0;
+}
+      
+#min_year, #max_year{
+  padding:0;
+  right-padding:0;
+}
+
+.dropdown button, .dropdown button:hover, .dropdown button:active{
+  background-color:white;
+  color:black;
+  border:none;
+}
