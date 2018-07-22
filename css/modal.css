@@ -1,0 +1,31 @@
+/* tab color */
+.nav-tabs{
+ background-color:black;
+}
+.nav-tabs>li>a {
+  background-color:black; 
+  border:none;
+  color:#fff;
+}
+
+/* active tab color */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #fff;
+  background-color: #666;
+  border: none;
+}
+
+/* hover tab color */
+.nav-tabs>li>a:hover {
+  border:none;
+  background-color: #111111;
+}
+
+.btn-default{
+ background-color:black;
+ color:white;
+}
+
+body.modal-open div.modal-backdrop { 
+    z-index: 0; 
+}
