@@ -9,7 +9,7 @@ There are a couple of changes since the initial software requirements. With the 
 
 3. Teachers will be able to extend loans by a maximum of eight weeks.
 
-4. An admin user with a complete set of responsabilities.
+4. The inclusion of admin users with a complete set of responsibilities.
 
 There are three types of users in the database:
 
