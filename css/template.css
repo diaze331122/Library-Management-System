@@ -38,6 +38,14 @@
         display:inline;
         margin-top:8%;
      }
+     
+     #welcome_message{
+     	color:#9bdaf1 !important;
+     }
+
+	#welcome_message_logged_in{
+     	color:#9bdaf1 !important;	
+	}
 
      .navbar-nav li a,  .navbar .navbar-brand{
         color:white !important;
@@ -45,32 +53,59 @@
         font-family: 'Roboto', sans-serif;
      }
 
-.navbar-nav ul{
-  display:inline;
-  font-family: 'Roboto', sans-serif;
-}
+     .navbar-nav ul{
+        display:inline;
+        font-family: 'Roboto', sans-serif;
+     }
 
-.account_side_menu{
-  height:80%;
-  width:16%;
-  position:fixed;
-  left:0;
-  overflow-x:hidden;
-  background-color:#F2F3F4;
-  padding-top:15%;
-  margin-bottom:15%;
-  font-family: 'Roboto', sans-serif;
-}
-
-.account_side_menu li{
-  display:block;
-  font-size:15px;
-  padding:5%;
-  font-family: 'Roboto', sans-serif;
-}
+	.account_side_menu{
+        height:80%;
+        width:16%;
+        position:fixed;
+        left:0;
+        overflow-x:hidden;
+        background-color:#2e8540;
+        padding-top:15%;
+        margin-bottom:15%;
+        font-family: 'Roboto', sans-serif;
+    }
        
-.account_side_menu a{
-  text-decoration:none;
-  display:block;
-  font-family: 'Roboto', sans-serif;
-}
+    .account_side_menu li{
+        display:block;
+        font-size:15px;
+    	padding:5%;
+        font-family: 'Roboto', sans-serif;
+    }
+       
+    .account_side_menu a{
+        text-decoration:none;
+        display:block;
+        font-family: 'Roboto', sans-serif;
+        color:white !important;  
+    }
+    
+    .admin_side_menu{
+        height:80%;
+        width:16%;
+        position:fixed;
+        left:0;
+        overflow-x:hidden;
+        background-color:#112e51;
+        padding-top:15%;
+        margin-bottom:15%;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    .admin_side_menu li{
+        display:block;
+        font-size:15px;
+    	padding:5%;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    .admin_side_menu a{
+        text-decoration:none;
+        display:block;
+        font-family: 'Roboto', sans-serif; 
+        color:white !important;   
+    }   
