@@ -15,4 +15,5 @@ function check_all(){
       checkboxes[i].checked = isChecked;
    }
  }
+
 }
