@@ -18,7 +18,8 @@ if ($query_result->num_rows == 1){
  $_SESSION["login"] = "Ok";
  $id;
  $type;
- logBrowser($connection);
+ $browser = getBrowserName();
+ logBrowser($connection,$browser);
  while($row = $query_result->fetch_assoc()){
     $id = $row['user_id'];
  }
@@ -29,6 +30,7 @@ if ($query_result->num_rows == 1){
     $type = $row['type'];
  }
  $_SESSION["user_type"] = $type;
+ $_SESSION["login_time"] = new DateTime(date('y-m-d h:m:s'));
  
  if ($type == 'admin'){
     header('Location:../pages/dashboard.php');
@@ -39,8 +41,7 @@ if ($query_result->num_rows == 1){
  header('Location:../pages/home.php');
 }
 
-//log browser info to database. Used for statistical purposes
-function logBrowser($connection){
+function getBrowserName(){
 	$browser_name = '';
 
 	if (strpos($_SERVER['HTTP_USER_AGENT'],'Safari')){
@@ -61,10 +62,14 @@ function logBrowser($connection){
 	else if (strpos($_SERVER['HTTP_USER_AGENT'],'UC')){
 		$browser_name = 'UC';
 	}else{}
-		
+	return $browser_name;
+}
+
+//log browser info to database. Used for statistical purposes
+function logBrowser($connection,$browser_name){	
 	//If browser is successfully detected (although accuracy is not guaranteed)
 	if ($browser_name != ''){
-		$sql = "UPDATE browsers SET num_users = num_users + 1 WHERE browser = '$browser_name'";
+		$sql = "UPDATE browsers_stat SET num_users = num_users + 1 WHERE browser = '$browser_name'";
 		$result = $connection->query($sql);
 		if ($result === TRUE){
 			echo "successfully execute database query";
@@ -73,6 +78,8 @@ function logBrowser($connection){
 		}
 	}	
 }
+
+
 function test_input($var,$connection){
   $var = trim($var);
   $var = stripslashes($var);

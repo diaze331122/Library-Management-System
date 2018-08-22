@@ -12,13 +12,15 @@ $resource_type = test_input('resource_type',$connection);
 $identifier = test_input('identifier',$connection);
 
 $resource_id = getResourceId($identifier,$connection);
+$subject_id = getSubjectId($resource_id,$connection);
 $loan_date = date("Y-m-d");
 $due_date = new DateTime($loan_date);
 
 date_add($due_date, date_interval_create_from_date_string('14 days'));
 
 addResourceToUserLoans($connection,$username,$resource_id,$loan_date,$due_date);
-updateResourceAvailability($resource_id);
+updateResourceAvailability($resource_id,$connection);
+updateSubjectStat($connection,$subject_id);
 
 function get_post($connection,$var){
   $_POST[$var] = trim($_POST[$var]);
@@ -52,7 +54,7 @@ function addResourceToUserLoans($connection,$username,$resource_id,$loan_date,$d
 }
 
 //update resource availability
-function updateResourceAvailability($id){
+function updateResourceAvailability($id,$connection){
 	$sql = "UPDATE resource_status SET status='unavailable' WHERE resource_id='$id'";
 	$result = $connection->query($sql);
 	if ($result === TRUE){
@@ -60,5 +62,27 @@ function updateResourceAvailability($id){
 	}
 }
 
+//get the subject of resource loaned
+function getSubjectId($resource_id,$connection,){
+$subject_id = 0;
+$sql = "SELECT subject_id FROM resource_subject WHERE resource_id = '$resource_id'";
+$result = $connection->query($sql);
+   if ($result->num_rows > 0){
+      while($row = $result->fetch_assoc()){
+         $subject_id = $row['subject_id'];
+      }
+   }
+  return $subject_id;
+}
+
+//update subject loan statistic
+function updateSubjectStat($connection,$id){
+  $sql = "UPDATE subject_stats SET num_borrowed += 1 WHERE subject_id = '$id'";
+  $result = $connection->query($sql);
+  
+  if ($result === TRUE){
+     echo "Successful stat update";
+  }
+}
 $connection->close();
 ?>
